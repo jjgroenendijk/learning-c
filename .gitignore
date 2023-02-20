@@ -79,4 +79,5 @@ Mkfile.old
 dkms.conf
 
 # VIM tmp file
-*.swp       
+*.swp
+*.swo
