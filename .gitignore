@@ -1,3 +1,11 @@
+# Filter all files without extension (e.g. C binaries)
+# Ignore all
+*
+# Unignore all with extensions
+!*.*
+# Unignore all dirs
+!*/
+
 # General
 .DS_Store
 .AppleDouble
@@ -81,3 +89,7 @@ dkms.conf
 # VIM tmp file
 *.swp
 *.swo
+
+# VSCode related
+.vscode
+

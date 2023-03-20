@@ -16,7 +16,7 @@ typedef struct
 
 //void sort_patients(
 
-void printPatients(patient_t *patients[], int numPatients);
+void printPatients(patient_t patients[], int numPatients);
 
 int main()
 {
@@ -28,12 +28,12 @@ int main()
 
     int numPatients = sizeof(patients)/sizeof(patients[0]);
 
-    printPatients(*patients, numPatients);
+    printPatients(patients, numPatients);
 
     return 0;
 }
 
-void printPatients(patient_t *patients[], int numPatients)
+void printPatients(patient_t patients[], int numPatients)
 {
     int i;
 
@@ -41,6 +41,6 @@ void printPatients(patient_t *patients[], int numPatients)
 
     for (i = 0; i < numPatients; i++)
     {
-        printf("name: %s\t\tage: %d\t\tweight: %.0lf\n", patients[i]->name, patients[i]->age, patients[i]->weight);
+        printf("name: %s\t\tage: %d\t\tweight: %.0lf\n", patients[i].name, patients[i].age, patients[i].weight);
     }
 }

@@ -1,48 +1,34 @@
 #include <stdio.h>
 
-// function prototypes. more on this later
-void modifyName(char *name);
-void modifyNumber(int *number);
+void add(int *x, int *y, int *result) { *result = *x + *y; }
 
 int main()
 {
-	// declare variables
-	char name[30];
-	int number;
+	// concept
+	int a = 42;
+	int *b = &a;
 
-	// ask user for input
-	printf("please input your name:\n");
-	scanf("%s", name);
+	printf("a: 	%d\n", a);
+	printf("&a: %p\n", &a);
+	printf("(*b): %d\n", (*b));
+	printf("&b: %p\n", &b);
 
-	printf("please input a number:\n");
-	scanf("%i", &number);
+	// pointers to functions
+	int w = 5;
+	int x = 19;
+	int result;
 
-	// let user validate input
-	printf("%s is the entered name\n", name);
-	printf("%i is the entered number\n", number);
+	// pass through the addresses of variables
+	add(&w, &x, &result);
+	printf("result: %d\n", result);
 
-	// send entered data to functions
-	modifyName(name);
-	modifyNumber(&number);
+	// initialize pointers
+	int *y = &w;
+	int *z = &x;
 
-	// show user the modified data
-	printf("%s is your new name\n", name);
-	printf("%i is your new number\n", number);
+	// pass throug pointers to function add
+	add(y, z, &result);
+	printf("result: %d\n", result);
 
-	// let the computer know that all is well :D
 	return 0;
-}
-
-// function for modifying name
-void modifyName(char *name)
-{
-	// modify data
-	name[0] = 'a';
-}
-
-// function for modifying number
-void modifyNumber(int *number)
-{
-	// multiply number by 2
-	*number = *number * 2;
 }
