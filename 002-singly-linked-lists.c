@@ -12,7 +12,7 @@ typedef struct node
 int countSLL(nodes_t *pHead);
 void printSLL(nodes_t *pHead);
 void appendSLL(nodes_t *pHead, int data);
-void prependSLL(nodes_t *pHead, int data);
+void prependSLL(nodes_t **pHead, int data);
 
 int main()
 {
@@ -45,14 +45,14 @@ int main()
     // print total amount of nodes
     printf("total: %d\n", countSLL(pHead));
 
-    // print sll content
-    printSLL(pHead);
-
     // append number to SLL
     appendSLL(pHead, 15);
 
     // prepend number to SLL
-    prependSLL(pHead, 16);
+    prependSLL(&pHead, 16);
+
+    // print sll content
+    printSLL(pHead);
 
     // free willy
     free(pHead);
@@ -125,15 +125,13 @@ void appendSLL(nodes_t *pHead, int data)
     }
 }
 
-void prependSLL(nodes_t *pHead, int data)
+void prependSLL(nodes_t **pHead, int data)
 {
     printf("prepending: %d\n", data);
 
-    nodes_t *prependPointer = NULL;
-    
-    nodes_t *pTMP = (nodes_t*)malloc(sizeof(nodes_t));
-    pTMP->number = data;
-    pTMP->pNext = pHead;
+    nodes_t *prependPointer = (nodes_t *)malloc(sizeof(nodes_t));
+    prependPointer->number = data;
+    prependPointer->pNext = *pHead;
 
-    // Continue here
+    *pHead = prependPointer;
 }
