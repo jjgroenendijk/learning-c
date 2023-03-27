@@ -1,11 +1,3 @@
-# Filter all files without extension (e.g. C binaries)
-# Ignore all
-*
-# Unignore all with extensions
-!*.*
-# Unignore all dirs
-!*/
-
 # General
 .DS_Store
 .AppleDouble
