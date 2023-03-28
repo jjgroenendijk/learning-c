@@ -16,6 +16,9 @@ void prependSLL(nodes_t **pHead, int data);
 void insertSLL(nodes_t *pHead, int position, int data);
 void deleteStartSLL(nodes_t **pHead, int amount);
 void deleteEndSLL(nodes_t *pHead, int amount);
+void deletePos(nodes_t **pHead, int position);
+void deleteSLL(nodes_t *pHead);
+void reverseSLL(nodes_t **pHead);
 
 int main()
 {
@@ -61,16 +64,22 @@ int main()
     printSLL(pHead);
 
     // delete first node of the list
-    deleteStartSLL(&pHead, 1);
+    deleteStartSLL(&pHead, 0);
 
     // delete x amount of nodes at the end of the list
     deleteEndSLL(pHead, 0);
 
+    // delete at position
+    // deletePos(&pHead, 3);
+
+    // delete sll list
+    // deleteSLL(pHead);
+
+    // reverse SLL
+    reverseSLL(&pHead);
+
     // print sll content
     printSLL(pHead);
-
-    // free willy
-    free(pHead);
 
     return 0;
 }
@@ -101,14 +110,14 @@ int countSLL(nodes_t *pHead)
 void printSLL(nodes_t *pHead)
 {
     // Initialize variable
-    nodes_t *printPointer = NULL;
-    printPointer = pHead;
+    nodes_t *printPointer = pHead;
 
     printf("complete list\n");
     // check if SLL has links. print data if link has data
     if (printPointer == NULL)
     {
         printf("List is empty\n");
+        return;
     }
     else
     {
@@ -203,3 +212,76 @@ void deleteEndSLL(nodes_t *pHead, int amount)
     }
 }
 
+void deletePos(nodes_t **pHead, int position)
+{
+    if ((*pHead) == NULL)
+    {
+        printf("error: head is empty");
+    }
+    else if (position == 1)
+    {
+        deleteStartSLL(pHead, 1);
+    }
+    else
+    {
+        nodes_t *pCurrent = *pHead;
+        nodes_t *pPrevious = *pHead;
+        for (int i = 1; i < position; i++)
+        {
+            pCurrent = pCurrent->pNext;
+        }
+
+        for (int i = 1; i < (position - 1); i++)
+        {
+            pPrevious = pPrevious->pNext;
+        }
+
+        printf("deleting: %d\t position: %d\n", pCurrent->number, position);
+
+        pPrevious->pNext = pCurrent->pNext;
+        free(pCurrent);
+        pCurrent = NULL;
+    }
+}
+
+void deleteSLL(nodes_t *pHead)
+{
+    nodes_t *pTMP = pHead;
+
+    while (pTMP != NULL)
+    {
+        pTMP = pTMP->pNext;
+        printf("deleting %d\n", pHead->number);
+        free(pHead);
+        pHead = pTMP;
+    }
+
+    printf("list deleted\n");
+}
+
+void reverseSLL(nodes_t **pHead)
+{
+    /*
+        General idea:
+
+        temp2 = head->link;
+        head->link = temp;
+        temp = head;
+        head = temp2
+    */
+
+    nodes_t *pPrev = NULL;
+    nodes_t *pNext = NULL;
+
+    while ((*pHead) != NULL)
+    {
+        pNext = (*pHead)->pNext;
+        (*pHead)->pNext = pPrev;
+        pPrev = *pHead;
+        *pHead = pNext;
+    }
+
+    *pHead = pPrev;
+
+    printf("list reversed\n");
+}
