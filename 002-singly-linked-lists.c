@@ -64,7 +64,7 @@ int main()
     deleteStartSLL(&pHead, 1);
 
     // delete x amount of nodes at the end of the list
-    deleteEndSLL(pHead, 2);
+    deleteEndSLL(pHead, 0);
 
     // print sll content
     printSLL(pHead);
@@ -187,39 +187,19 @@ void deleteStartSLL(nodes_t **pHead, int amount)
 
 void deleteEndSLL(nodes_t *pHead, int amount)
 {
-    nodes_t *deletePointer = pHead;
-    while (amount > 0)
+    // unsafe code, but it works for demonstration purposes!
+    for (int i = 0; i < amount; i++)
     {
-        while (deletePointer->pNext->pNext != NULL)
+        nodes_t *pDeleter = pHead;
+
+        while (pDeleter->pNext->pNext != NULL)
         {
-            deletePointer = deletePointer->pNext;
+            pDeleter = pDeleter->pNext;
+            printf("travelled to node: %d\n", pDeleter->number);
         }
-        printf("last node: %d\n", deletePointer->number);
 
-        free(deletePointer->pNext->pNext);
-        deletePointer->pNext->pNext = NULL;
-        amount--;
+        free(pDeleter->pNext);
+        pDeleter->pNext = NULL;
     }
-
-    /*
-    int travel = (countSLL(pHead) - amount);
-    int i;
-    for (i = 0; i < (travel - 1); i++)
-    {
-        deletePointer = deletePointer->pNext;
-    }
-
-    // free the nodes starting from the last node
-    nodes_t *current = deletePointer->pNext;
-    nodes_t *next;
-    for (i = 0; i < amount; i++)
-    {
-        next = current->pNext;
-        free(current);
-        current = next;
-    }
-
-    // update the next pointer of the node before the deleted nodes
-    deletePointer->pNext = NULL;
-    */
 }
+
