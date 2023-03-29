@@ -23,6 +23,7 @@
 typedef struct
 {
    // int (........)(......);      /// <== insert the definition for a function pointer member name is ope
+   int (*ope)(int, int);
    char name[10];
 } operation;
 
@@ -50,14 +51,14 @@ int main()
    /// Replace the contents of the array below with the correct
    /// assignments for each operation
    ///
-   operations[0].ope = NULL;
-   strcpy(operations[0].name, "");
-   operations[1].ope = NULL;
-   strcpy(operations[1].name, "");
-   operations[2].ope = NULL;
-   strcpy(operations[2].name, "");
-   operations[3].ope = NULL;
-   strcpy(operations[3].name, "");
+   operations[0].ope = &sum;
+   strcpy(operations[0].name, "sum");
+   operations[1].ope = &sub;
+   strcpy(operations[1].name, "sub");
+   operations[2].ope = &mult;
+   strcpy(operations[2].name, "mult");
+   operations[3].ope = &divd;
+   strcpy(operations[3].name, "divd");
 
    printf("Enter two integer numbers (on one line: ");
    scanf("%d%d", &x, &y);

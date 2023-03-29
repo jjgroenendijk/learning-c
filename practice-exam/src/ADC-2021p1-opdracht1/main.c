@@ -8,12 +8,13 @@ int main(int argc, char *argv[])
 {
   int count = 4;                        // default value for count, see assignment 1-a
   /// Solution for assignment 1a
-  if (argc < 2)                        // check the number of arguments, must be at least 2 (progname and argument)
+  if (!(argc >= 2))                        // check the number of arguments, must be at least 2 (progname and argument)
     {
       fprintf(stderr, "Usage: %s <number of nodes>\n", argv[0]);
       exit(1);                         // missing argument exit the program
     }  
   count = atoi(argv[1]);
+  printf("argument amount: %d", count);
   
   node_t *pHead = NULL; /* Create an empty SLL,
                             pHead is the 'owner' of the SLL */
