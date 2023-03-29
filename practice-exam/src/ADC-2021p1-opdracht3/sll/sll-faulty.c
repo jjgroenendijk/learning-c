@@ -33,6 +33,9 @@ void addSLL(node_t **ppHead, int data)
    {
       *ppHead = pNew;
    }
+
+   free (pNew);
+   pNew = NULL;
 }
 
 void clearSLL(node_t **ppHead)

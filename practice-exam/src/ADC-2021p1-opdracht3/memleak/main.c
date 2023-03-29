@@ -30,6 +30,8 @@ char * create_banner(void)
    char *b = malloc (len);
    sprintf (b, "\t|** %s **|", user);
    return b;
+   free(b);
+   b = NULL;
 }
 
 void output_report (int nr)
@@ -38,4 +40,6 @@ void output_report (int nr)
    puts (banner);
    printf ("Number: %d\n", nr);
    printf ("\n");
+   free(banner);
+   banner = NULL;
 }
