@@ -7,8 +7,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int  Func1SLL(const node_t *pSLL1);
-void Func2SLL(node_t * pHead1, node_t **ppHead2);
+int Func1SLL(const node_t *pSLL1);
+void Func2SLL(node_t *pHead1, node_t **ppHead2);
 
 int main(void)
 {
@@ -46,17 +46,27 @@ int main(void)
 
 // Functions assignments
 
-int Func1SLL(const node_t * pHead)
+int Func1SLL(const node_t *pHead)
 {
     const node_t *pNext = pHead;
     int result = 0;
 
+    /* counter
+        if (pHead != NULL)
+        {
+            while (pNext != NULL)
+            {
+                result++;
+                pNext = pNext->pNextNode;
+            }
+        }
+    */
+
     return result;
 }
 
-void Func2SLL(node_t * pHead1, node_t **ppHead2)
+void Func2SLL(node_t *pHead1, node_t **ppHead2)
 {
     // implement functionality for sllFunc2
     node_t *pNext = pHead1;
-
 }

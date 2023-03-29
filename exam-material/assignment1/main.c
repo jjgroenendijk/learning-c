@@ -13,8 +13,15 @@ int main(void)
 {
    double result = 0.0;
    double (*fpointer);
+   
+   // double (*fpointer)(double, double);
+   // fPower = &power;
+   // double resultPower = (*fPower)(2, 3);)
 
    printf("Results: \n");
+   //    printf("Results: %.01lf\n", resultPower);
+
+
 
 }
 
