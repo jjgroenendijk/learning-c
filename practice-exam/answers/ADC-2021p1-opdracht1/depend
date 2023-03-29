@@ -1,0 +1,2 @@
+sll.o: sll.c sll.h
+main.o: main.c sll.h
