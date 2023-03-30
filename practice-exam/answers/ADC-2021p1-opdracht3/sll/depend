@@ -1,2 +1,0 @@
-sll-faulty.o: sll-faulty.c sll-faulty.h
-main.o: main.c sll-faulty.h
