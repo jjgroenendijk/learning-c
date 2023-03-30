@@ -5,6 +5,8 @@
 void addSLL(node_t **ppHead, int data)
 {
    node_t *pNext = *ppHead;
+
+   /* Deze moet nog een free krijgen volgens valgrind */
    node_t *pNew = (node_t *)malloc(sizeof(node_t));
 
    /* Check if allocation has succeeded */

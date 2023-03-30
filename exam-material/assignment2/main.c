@@ -44,29 +44,46 @@ int main(void)
     return 0;
 }
 
-// Functions assignments
-
 int Func1SLL(const node_t *pHead)
 {
-    const node_t *pNext = pHead;
+    // declare variable to give back to main.
     int result = 0;
 
-    /* counter
-        if (pHead != NULL)
-        {
-            while (pNext != NULL)
-            {
-                result++;
-                pNext = pNext->pNextNode;
-            }
-        }
-    */
+    const node_t *pNext = pHead;
 
+
+    if (pHead != NULL)
+    {
+        while (pNext != NULL)
+        {
+            // Alles van SLL.data optellen in result.
+            result += pNext->data;
+            // Pointer naar de volgende waarde zetten.
+            pNext = pNext->pNextNode;
+        }
+    }
+
+    // Geef resultaat terug aan main
     return result;
 }
 
+// Ik zie iets over het hoofd in deze functie, maar ik weet niet wat.
+// Output lijkt wel te kloppen.
 void Func2SLL(node_t *pHead1, node_t **ppHead2)
 {
-    // implement functionality for sllFunc2
-    node_t *pNext = pHead1;
+    // check data has arrived
+    if ((pHead1 != NULL) && (ppHead2 != NULL))
+    {
+        // ga naar het einde van singly linked list 1
+        while (pHead1->pNextNode != NULL)
+        {
+            pHead1 = pHead1->pNextNode;
+        }
+
+        // verander de node pointer aan het einde van sll1 in het begin van sll2
+        pHead1->pNextNode = (*ppHead2);
+    }
+
+    // phead2 opschonen en leegmaken
+    *ppHead2 = NULL;
 }
